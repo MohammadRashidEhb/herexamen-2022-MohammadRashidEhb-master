@@ -1,6 +1,6 @@
 "use strict";
 
-export default class Klasse {
+export class Klasse {
     constructor(value, unit, timestamp) {
         this._value = value;
         this._unit = unit;
@@ -16,23 +16,20 @@ export default class Klasse {
     }
 
     get time () {
-      return this._timestamp;
+      return this._timestamp.toLocaleString("nl-BE");
     }
 
     get date () {
-      return this._timestamp;
+      return this.toLocaleDateString("nl-BE");
     }
 
 
     get htmlString() {
-
         return `
           <thead>
-            <tr><th>${this._unit}</th><th>${this._value}</th><th>${this._timestamp}</th></tr>
-          </thead>
-          <tbody id="measurements">
-          </tbody>
-        </table>
-      </div>`
+            <tr><th>${this._unit}</th>
+            <th>${this._value}</th>
+            <th>${this.time}</th></tr>
+          </thead>`;
     }
 }
